@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
+#include <ostream>
 #include <exception>
 
 class Bureaucrat {
@@ -29,6 +30,8 @@ class Bureaucrat {
 		//methods
 		const std::string& getName() const;
 		int getGrade() const;
+		void increment(void);
+		void decrement(void);
 
 		//exception
 		class GradeTooHighException : public std::exception {
@@ -42,5 +45,6 @@ class Bureaucrat {
 		};
 };
 
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
 #endif

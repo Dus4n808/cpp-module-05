@@ -11,13 +11,24 @@
 /* ************************************************************************** */
 
 #include "../headers/Bureaucrat.hpp"
+#include <exception>
 #include <iostream>
 
 
 int main()
 {
-	Bureaucrat a("Paul", 1);
-	std::cout << a.getGrade() << std::endl;
-	std::cout << a.getName() << std::endl;
-
+	Bureaucrat a("Paul", 150);
+	Bureaucrat b("Benoit", 1);
+	try {
+		a.decrement();
+	} catch (std::exception& e) {
+		std::cerr << "Erreur " << e.what() << std::endl;
+	}
+	try {
+		b.increment();
+	} catch (std::exception& e) {
+		std::cerr << "Erreur " << e.what() << std::endl;
+	}
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
 }
