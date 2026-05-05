@@ -18,7 +18,10 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {}
 
 //Default
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
-   
+	if (_grade > 150)
+		throw  GradeTooLowException();
+	else if (_grade < 1)
+		throw GradeTooHighException();
 }
 
 //Copy
@@ -46,25 +49,23 @@ int Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::increment() {
-    if (_grade > 1)
-        _grade -= 1;
-    else
-        throw GradeTooHighException();
+   if (_grade <= 1 || _grade > 150)
+   		throw GradeTooHighException();
+   _grade--;
 }
 
 void Bureaucrat::decrement() {
-	if (_grade < 150)
-		_grade += 1;
-	else
+	if (_grade < 1 || _grade >= 150)
 		throw GradeTooLowException();
+	_grade++;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Grade too high";
+    return "Grade is too high";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Grade too low";
+    return "Grade is too low";
 }
 
 // === Overload ===
