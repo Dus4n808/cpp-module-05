@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dufama <dufama@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/Form.hpp"
+#include "../headers/AForm.hpp"
 #include <ios>
 #include <ostream>
 #include <iomanip>
@@ -39,7 +39,7 @@ AForm::~AForm() {}
 //Overload
 std::ostream& operator<<(std::ostream& os, const AForm& b) {
 	os << std::left 
-	<< std::setw(20) << "Form : " << b.getName() << std::endl
+	<< std::setw(20) << "AForm : " << b.getName() << std::endl
 	<< std::setw(20) << std::boolalpha << "Is signed : " << b.getIsSigned() << std::noboolalpha << std::endl
 	<< std::setw(20) << "Grade to sign : " << b.getGradeToSign() << std::endl
 	<< std::setw(20) << "Grade to execute : " << b.getGradeToExecute() << std::endl;
@@ -54,6 +54,14 @@ const char * AForm::GradeTooHighException::what() const throw() {
 
 const char * AForm::GradeTooLowException::what() const throw() {
 	return "Grade too low";
+}
+
+const char * AForm::IsAlreadySigned::what() const throw() {
+	return  "Is already signed";
+}
+
+const char * AForm::FormNotSigned::what() const throw() {
+	return "Is not signed";
 }
 
 // ===== Methods =====
@@ -75,6 +83,8 @@ int AForm::getGradeToExecute() const {
 }
 
 void AForm::beSigned(const Bureaucrat& t) {
+	if (_isSigned == true)
+		throw IsAlreadySigned();
 	if (t.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
 	else

@@ -11,57 +11,24 @@
 /* ************************************************************************** */
 
 #include "../headers/Bureaucrat.hpp"
-#include "../headers/Form.hpp"
+#include "../headers/ShrubberyCreationForm.hpp"
+#include "../headers/RobotomyRequestForm.hpp"
 #include <exception>
 #include <iostream>
 #include <ostream>
 
-void tryToAddGrade(Bureaucrat& toTest, int grade) {
-	try {
-		for (int i = 0; i < grade; i++)
-			toTest.increment();
-		std::cout << toTest << std::endl << std::endl;
-	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl << std::endl;
-	}
-}
-
-void tryToDecrement(Bureaucrat& toTest, int grade) {
-	try {
-		for (int i = 0; i < grade; i++)
-			toTest.decrement();
-		std::cout << toTest << std::endl << std::endl;
-	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl << std::endl;
-	}
-}
 
 
 int main()
 {
-	//Form
-	AForm formA("Loi", 12, 1);
-	AForm formB("Pacte", 100, 100);
-
-	std::cout << formA << std::endl;
-	std::cout << formB << std::endl;
-
-	//Bureaucrat
-	Bureaucrat b("Paul", 60);
-	Bureaucrat a("Alain", 1);
-
-	//Test
-	// No problem
-	tryToAddGrade(b, 10);
-	//Error catch to high
-	tryToAddGrade(a, 12);
-	tryToDecrement(a, 10);
+	std::srand(std::time(NULL));
+	Bureaucrat paul("Paul", 1);
+	RobotomyRequestForm formulaire("test");
+	try {
+		paul.signForm(formulaire);
+		paul.executeForm(formulaire);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	
-	b.signForm(formA);
-	b.signForm(formB);
-
-	a.signForm(formB);
-
-	std::cout << formA << std::endl;
-	std::cout << formB << std::endl;
 }

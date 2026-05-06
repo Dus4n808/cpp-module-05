@@ -30,7 +30,7 @@ class AForm {
 		AForm(std::string const name, const int gradeToSign, const int gradeToExectue);
 		AForm(const AForm& copy);
 		AForm& operator=(const AForm& assign);
-		~AForm();
+		virtual ~AForm();
 
 		//Exception
 		class GradeTooHighException : public std::exception {
@@ -38,6 +38,15 @@ class AForm {
 				virtual const char * what() const throw(); 
 		};
 		class GradeTooLowException : public std::exception {
+			public:
+				virtual const char * what() const throw();
+		};
+		class IsAlreadySigned : public std::exception {
+			public:
+				virtual const char * what() const throw();
+		};
+
+		class FormNotSigned : public std::exception {
 			public:
 				virtual const char * what() const throw();
 		};
@@ -49,7 +58,8 @@ class AForm {
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
 
-		void beSigned(const Bureaucrat& t);	
+		void beSigned(const Bureaucrat& t);
+		virtual void execute(const Bureaucrat& executor) const = 0;
 };
 
 //Overload

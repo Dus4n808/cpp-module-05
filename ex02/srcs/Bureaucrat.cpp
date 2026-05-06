@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../headers/Bureaucrat.hpp"
-#include "../headers/Form.hpp"
+#include "../headers/AForm.hpp"
 #include <exception>
 #include <ostream>
 #include <iostream>
@@ -69,7 +69,17 @@ void Bureaucrat::signForm(AForm& form) {
 		form.beSigned(*this);
 		std::cout << _name << " signed : " << form.getName() << std::endl; 
 	} catch (std::exception& e) {
-		std::cout << _name << " couldn't sign " << form.getName() << " because "
+		std::cerr << _name << " couldn't sign " << form.getName() << " because "
+		<< e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(const AForm& form) {
+	try {
+		form.execute(*this);
+		std::cout << _name << " executed : " << form.getName() << std::endl;
+	} catch (std::exception& e) {
+		std::cerr << _name << " couldn't execute " << form.getName() << " because "
 		<< e.what() << std::endl;
 	}
 }
