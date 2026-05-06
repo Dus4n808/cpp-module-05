@@ -17,6 +17,8 @@
 #include <ostream>
 #include <exception>
 
+class Form;
+
 class Bureaucrat {
 	private:
 		std::string const _name;
@@ -30,8 +32,9 @@ class Bureaucrat {
 		//methods
 		const std::string& getName() const;
 		int getGrade() const;
-		void increment(void);
-		void decrement(void);
+		void increment();
+		void decrement();
+		void signForm(Form& form);
 
 		//exception
 		class GradeTooHighException : public std::exception {

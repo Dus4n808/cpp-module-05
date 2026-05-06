@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 #include "../headers/Bureaucrat.hpp"
+#include "../headers/Form.hpp"
+#include <exception>
 #include <ostream>
+#include <iostream>
 
 
 //Default
@@ -61,6 +64,18 @@ void Bureaucrat::decrement() {
 	_grade++;
 }
 
+void Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+		std::cout << _name << " signed : " << form.getName() << std::endl; 
+	} catch (std::exception& e) {
+		std::cout << _name << " couldn't sign " << form.getName() << " because "
+		<< e.what() << std::endl;
+	}
+}
+
+//===== Exception =====
+
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
     return "Grade is too high";
 }
@@ -69,7 +84,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return "Grade is too low";
 }
 
-// === Overload ===
+// ===== Overload =====
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
     os << b.getName() << ", Bureaucrat grade : " << b.getGrade();
     return os;

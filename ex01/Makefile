@@ -18,7 +18,7 @@ HEADER_DIR 	= headers
 SRCS_DIR	= srcs
 OBJ_DIR		= obj
 
-SRCS_FILES	= main.cpp Bureaucrat.cpp
+SRCS_FILES	= main.cpp Bureaucrat.cpp Form.cpp
 SRCS		= $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJ			= $(addprefix $(OBJ_DIR)/, $(SRCS_FILES:.cpp=.o))
 CXXFLAGS 	+= -I $(HEADER_DIR)
