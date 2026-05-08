@@ -24,7 +24,7 @@ Intern::Intern() {}
 Intern::~Intern() {}
 
 AForm* Intern::makeForm(std::string formName, std::string target) {
-	std::string tab[] = {"shruberry request", "president request", "robotomy request"};
+	std::string tab[] = {"shrubbery request", "presidential request", "robotomy request"};
 	AForm *ptr = NULL;
 	int i = 0;
 	while (i < 3) {
