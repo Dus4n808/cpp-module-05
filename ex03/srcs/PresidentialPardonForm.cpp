@@ -26,7 +26,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& cop
 //Assign
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& assign) {
 	if (this != &assign) {
-		AForm::operator=(*this);
+		AForm::operator=(assign);
 		_target = assign._target;
 	}
 	return *this;

@@ -21,7 +21,7 @@ class Intern {
 		Intern(const Intern& copy);
 		Intern& operator=(const Intern& assign);
 		~Intern();
-		AForm* makeForm(std::string formName, std::string target);
+		AForm* makeForm(std::string formName, std::string target) const;
 };
 
 #endif

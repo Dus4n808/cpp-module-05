@@ -33,8 +33,8 @@ Intern& Intern::operator=(const Intern& assign) {
 //Destructor
 Intern::~Intern() {}
 
-AForm* Intern::makeForm(std::string formName, std::string target) {
-	std::string tab[] = {"shrubbery request", "presidential request", "robotomy request"};
+AForm* Intern::makeForm(std::string formName, std::string target) const {
+	std::string tab[] = {"shrubbery creation", "presidential pardon", "robotomy request"};
 	AForm *ptr = NULL;
 	int i = 0;
 	while (i < 3) {

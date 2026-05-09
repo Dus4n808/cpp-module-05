@@ -28,7 +28,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AFor
 //Assing constructor
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& assing) {
 	if (this != &assing) {
-		AForm::operator=(*this);
+		AForm::operator=(assing);
 		_target = assing._target;
 	}
 	return  *this;
