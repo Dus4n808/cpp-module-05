@@ -26,6 +26,7 @@
 
 int main()
 {
+	std::srand(std::time(NULL));
 	Intern slave;
 	Bureaucrat Steve("Steve", 1);
 	AForm* form;

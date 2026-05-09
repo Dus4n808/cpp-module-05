@@ -47,6 +47,7 @@ void testPresidential(Bureaucrat& toTest, AForm& form) {
 
 int main()
 {
+	std::srand(std::time(NULL));
 	//Bureaucrat
 	Bureaucrat Shurb("Shurb", 150);
 	Bureaucrat Robot("Robot", 150);

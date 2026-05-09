@@ -40,7 +40,6 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 // ===== Methods =====
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
-	std::srand(std::time(NULL));
 	if (this->getIsSigned() == false)
 		throw AForm::FormNotSigned();
 	if (executor.getGrade() > getGradeToExecute())
