@@ -21,6 +21,16 @@
 //Default constructor
 Intern::Intern() {}
 
+Intern::Intern(const Intern& copy) {
+	(void)copy;
+}
+
+Intern& Intern::operator=(const Intern& assign) {
+	(void)assign;
+	return *this;
+}
+
+//Destructor
 Intern::~Intern() {}
 
 AForm* Intern::makeForm(std::string formName, std::string target) {
