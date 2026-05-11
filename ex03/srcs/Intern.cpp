@@ -31,10 +31,7 @@ Intern& Intern::operator=(const Intern& assign) {
 }
 
 //Destructor
-Intern::~Intern() {
-	if (_ptr)
-		delete _ptr;
-}
+Intern::~Intern() {}
 
 AForm* Intern::makeForm(std::string formName, std::string target)  {
 	std::string tab[] = {"shrubbery creation", "presidential pardon", "robotomy request"};
@@ -59,7 +56,6 @@ AForm* Intern::makeForm(std::string formName, std::string target)  {
 			std::cerr << "Form not found" << std::endl;
 			
 	}
-	_ptr = ptr;
 	return ptr;
 }
 

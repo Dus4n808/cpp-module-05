@@ -15,8 +15,6 @@
 
 #include "AForm.hpp"
 class Intern {
-	private:
-		AForm* _ptr;
 	public:
 		Intern();
 		Intern(const Intern& copy);

@@ -22,8 +22,8 @@
 #include <ostream>
 
 void testShrub(Intern& salve, Bureaucrat& toTest, std::string nameForm, std::string target) {
+	AForm *form = NULL;
 	try {
-		AForm *form;
 		form = salve.makeForm(nameForm, target);
 		if (form != NULL) {
 			toTest.signForm(*form);
@@ -32,14 +32,31 @@ void testShrub(Intern& salve, Bureaucrat& toTest, std::string nameForm, std::str
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
+	delete form;
+}
+
+void testPres(Intern& intern, Bureaucrat& toTest, std::string nameForm, std::string target) {
+	AForm *form = NULL;
+	try {
+		form = intern.makeForm(nameForm, target);
+		if (form != NULL) {
+			toTest.signForm(*form);
+			toTest.executeForm(*form);
+		} 
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	delete form;
 }
 
 int main()
 {
 	std::srand(std::time(NULL));
 	Intern leo;
-	Bureaucrat Steve("Steve", 1);
+	Bureaucrat steve("Steve", 1);
+	Bureaucrat paul("Paul", 150);
 	
-	testShrub(leo, Steve, "robotomy request", "Target");
+	testShrub(leo, steve, "robotomy request", "Target");
+	testPres(leo, paul, "presidential pardon", "Apple");
 	
 }
