@@ -68,7 +68,7 @@ int main()
 	Pres.signForm(FormRobot);
 	Pres.signForm(FormPres);
 
-	testShrubbery(Shurb, FormShurb);
-	testRobotomy(Robot, FormRobot);
+	testShrubbery(Pres, FormShurb);
+	testRobotomy(Pres, FormRobot);
 	testPresidential(Pres, FormPres);
 }

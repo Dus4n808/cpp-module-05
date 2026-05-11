@@ -36,12 +36,20 @@ void tryToDecrement(Bureaucrat& toTest, int grade) {
 	}
 }
 
+void tryToSigned(Bureaucrat& toTest, Form& form) {
+	try {
+		toTest.signForm(form);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 
 int main()
 {
 	//Form
-	AForm formA("Loi", 12, 1);
-	AForm formB("Pacte", 100, 100);
+	Form formA("Loi", 12, 1);
+	Form formB("Pacte", 100, 100);
 
 	std::cout << formA << std::endl;
 	std::cout << formB << std::endl;
@@ -50,18 +58,10 @@ int main()
 	Bureaucrat b("Paul", 60);
 	Bureaucrat a("Alain", 1);
 
-	//Test
-	// No problem
-	tryToAddGrade(b, 10);
-	//Error catch to high
-	tryToAddGrade(a, 12);
-	tryToDecrement(a, 10);
+	//test error
+	tryToSigned(b, formA);
+
 	
-	b.signForm(formA);
-	b.signForm(formB);
-
-	a.signForm(formB);
-
-	std::cout << formA << std::endl;
-	std::cout << formB << std::endl;
+	//test success
+	tryToSigned(a, formA);
 }

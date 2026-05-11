@@ -18,26 +18,26 @@
 // ===== FCO =====
 
 //Default
-AForm::AForm() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExecute(1) {}
+Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExecute(1) {}
 
 //Default constructor
-AForm::AForm(const std::string name, const int gradeToSign, const int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
+Form::Form(const std::string name, const int gradeToSign, const int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {}
 
 //Copy constructor
-AForm::AForm(const AForm& copy) : _name(copy._name), _isSigned(copy._isSigned), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute) {}
+Form::Form(const Form& copy) : _name(copy._name), _isSigned(copy._isSigned), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute) {}
 
 //Assign constructor
-AForm& AForm::operator=(const AForm& assign) {
+Form& Form::operator=(const Form& assign) {
 	if (this != &assign)
 		_isSigned = assign._isSigned;
 	return  *this;
 }
 
 //Destructror
-AForm::~AForm() {}
+Form::~Form() {}
 
 //Overload
-std::ostream& operator<<(std::ostream& os, const AForm& b) {
+std::ostream& operator<<(std::ostream& os, const Form& b) {
 	os << std::left 
 	<< std::setw(20) << "Form : " << b.getName() << std::endl
 	<< std::setw(20) << std::boolalpha << "Is signed : " << b.getIsSigned() << std::noboolalpha << std::endl
@@ -48,35 +48,35 @@ std::ostream& operator<<(std::ostream& os, const AForm& b) {
 
 // ===== Exception =====
 
-const char * AForm::GradeTooHighException::what() const throw() {
+const char * Form::GradeTooHighException::what() const throw() {
 	return "Grade too high";
 }
 
-const char * AForm::GradeTooLowException::what() const throw() {
+const char * Form::GradeTooLowException::what() const throw() {
 	return "Grade too low";
 }
 
 // ===== Methods =====
 
-const std::string& AForm::getName() const {
+const std::string& Form::getName() const {
 	return _name;
 }
 
-bool AForm::getIsSigned() const {
+bool Form::getIsSigned() const {
 	return  _isSigned;
 }
 
-int AForm::getGradeToSign() const {
+int Form::getGradeToSign() const {
 	return  _gradeToSign;
 }
 
-int AForm::getGradeToExecute() const {
+int Form::getGradeToExecute() const {
 	return  _gradeToExecute;
 }
 
-void AForm::beSigned(const Bureaucrat& t) {
+void Form::beSigned(const Bureaucrat& t) {
 	if (t.getGrade() > _gradeToSign)
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else
 		_isSigned = true;
 }

@@ -16,12 +16,13 @@
 #include "AForm.hpp"
 class Intern {
 	private:
+		AForm* _ptr;
 	public:
 		Intern();
 		Intern(const Intern& copy);
 		Intern& operator=(const Intern& assign);
 		~Intern();
-		AForm* makeForm(std::string formName, std::string target) const;
+		AForm* makeForm(std::string formName, std::string target) ;
 };
 
 #endif

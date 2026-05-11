@@ -13,12 +13,12 @@
 #ifndef  FORM_HPP
 #define FORM_HPP
 
-#include "Bureaucrat.hpp"
+#include "../headers/Bureaucrat.hpp"
 #include <exception>
 #include <ostream>
 #include <string>
 
-class AForm {
+class Form {
 	private:
 		const std::string _name;
 		bool _isSigned;
@@ -26,11 +26,11 @@ class AForm {
 		const int _gradeToExecute;
 	public:
 		//FCO
-		AForm();
-		AForm(std::string const name, const int gradeToSign, const int gradeToExectue);
-		AForm(const AForm& copy);
-		AForm& operator=(const AForm& assign);
-		~AForm();
+		Form();
+		Form(std::string const name, const int gradeToSign, const int gradeToExectue);
+		Form(const Form& copy);
+		Form& operator=(const Form& assign);
+		~Form();
 
 		//Exception
 		class GradeTooHighException : public std::exception {
@@ -43,7 +43,6 @@ class AForm {
 		};
 		
 		//methods
-		// Getters
 		const std::string& getName() const;
 		bool getIsSigned() const;
 		int getGradeToSign() const;
@@ -53,6 +52,6 @@ class AForm {
 };
 
 //Overload
-std::ostream& operator<<(std::ostream& os, const AForm& b);
+std::ostream& operator<<(std::ostream& os, const Form& b);
 
 #endif

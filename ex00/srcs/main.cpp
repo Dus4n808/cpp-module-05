@@ -44,6 +44,7 @@ int main()
 {
 	testForLoopIncrement();
 	testForLoopDecrement();
+	//test create
 	try {
 		Bureaucrat c("Charles", 151);
 	} catch (const std::exception& e) {

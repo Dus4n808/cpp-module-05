@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "../headers/Bureaucrat.hpp"
-#include "../headers/ShrubberyCreationForm.hpp"
-#include "../headers/PresidentialPardonForm.hpp"
-#include "../headers/RobotomyRequestForm.hpp"
+// #include "../headers/ShrubberyCreationForm.hpp"
+// #include "../headers/PresidentialPardonForm.hpp"
+// #include "../headers/RobotomyRequestForm.hpp"
 #include "../headers/Intern.hpp"
 #include <exception>
 #include <ctime>
@@ -21,23 +21,25 @@
 #include <iostream>
 #include <ostream>
 
-
-
+void testShrub(Intern& salve, Bureaucrat& toTest, std::string nameForm, std::string target) {
+	try {
+		AForm *form;
+		form = salve.makeForm(nameForm, target);
+		if (form != NULL) {
+			toTest.signForm(*form);
+			toTest.executeForm(*form);
+		} 
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
 
 int main()
 {
 	std::srand(std::time(NULL));
-	Intern slave;
+	Intern leo;
 	Bureaucrat Steve("Steve", 1);
-	AForm* form;
-	form = slave.makeForm("robotomy sdf", "Steve Jobs");
-	try {
-		if (form != NULL) {
-			Steve.signForm(*form);
-			Steve.executeForm(*form);
-		}
-	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-	delete form;
+	
+	testShrub(leo, Steve, "robotomy request", "Target");
+	
 }
